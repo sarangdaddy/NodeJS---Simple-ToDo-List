@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= 'To Do list - node.js ver'
+    body 
+        h1= toDoListTitle 
+        form(action='/add_list' method='post')
+            p 
+                label(for='content') 할 일 추가 :
+                input(type='text' name='content' autocomplete='off')
+                input(type='submit' value='추가하기')
+            p
+                ul 
+                    each val in toDoLists  
+                        li
+                            = val
+                            button(type='button' onclick='location.href="/delete_list/' + val + '"') 삭제하기
+                            a(href=`/open_update/${val}`) 수정하기 
